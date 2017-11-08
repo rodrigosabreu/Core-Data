@@ -17,9 +17,38 @@ class ViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
+        //Recuperando dados
+        //Criar uma requisição
+        let requisicao = NSFetchRequest<NSFetchRequestResult>(entityName: "Usuario")
+        
+        
+        do {
+            let usuarios = try context.fetch(requisicao)
+            
+            if usuarios.count > 0{
+                
+                for usuario in usuarios as! [NSManagedObject]{
+                    if let nomeUsuario = usuario.value(forKey: "nome"){
+                        print(nomeUsuario)
+                    }
+                    let idadeUsuario = usuario.value(forKey: "idade")
+                    let loginUsuario = usuario.value(forKey: "login")
+                    let senhaUsuario = usuario.value(forKey: "senha")
+                    
+                }
+                
+            }else{
+                print("Nenhum usuário encontrado!")
+            }
+            
+        } catch {
+            print("Erro ao recuperar os usuarios!")
+        }
+        
+        
         
         /*Criar entidade*/
-        let usuario = NSEntityDescription.insertNewObject(forEntityName: "Usuario", into: context)
+        /*let usuario = NSEntityDescription.insertNewObject(forEntityName: "Usuario", into: context)
         
         /*Configurar Objeto*/
         usuario.setValue("Tatiana Abreu", forKey: "nome")
@@ -33,7 +62,9 @@ class ViewController: UIViewController {
             print("Dados salvos corretamente!")
         } catch  {
             print("Erro ao salvar os dados")
-        }
+        }*/
+        
+        
         
     }
 
