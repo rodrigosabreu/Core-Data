@@ -45,9 +45,10 @@ class ViewController: UIViewController {
         
         //Ordenar de A-Z ou Z-A
         let ordenacaoAZ = NSSortDescriptor(key: "descricao", ascending: true)
+        let ordenacaoZA = NSSortDescriptor(key: "preco", ascending: false)
         
         //aplicar filtros criados à requiscao
-        requisicao.sortDescriptors = [ordenacaoAZ]
+        requisicao.sortDescriptors = [ordenacaoAZ, ordenacaoZA]
         
         
         do {
