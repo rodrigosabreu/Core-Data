@@ -17,9 +17,76 @@ class ViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
+        
+        
+        /*
+        //Criar entidade
+        let produto = NSEntityDescription.insertNewObject(forEntityName: "Produto", into: context)
+        
+        //configura o objeto
+        produto.setValue("iPhone 5", forKey: "descricao")
+        produto.setValue("Rosa", forKey: "cor")
+        produto.setValue(2, forKey: "preco")
+        
+        //Salvar os dados
+        
+        do {
+            try context.save()
+            print("Sucesso ao salvar dados!")
+        } catch  {
+            print("Erro ao salvar dados!")
+        }
+        */
+        
+        
+        
+        //Criar Requisição
+        let requisicao = NSFetchRequest<NSFetchRequestResult>(entityName: "Produto")
+        
+        //Ordenar de A-Z ou Z-A
+        let ordenacaoAZ = NSSortDescriptor(key: "descricao", ascending: true)
+        
+        //aplicar filtros criados à requiscao
+        requisicao.sortDescriptors = [ordenacaoAZ]
+        
+        
+        do {
+            let produtos = try context.fetch(requisicao)
+            
+            if produtos.count > 0{
+                
+                for produto in produtos as! [NSManagedObject]{
+                    
+                    if let nomeProduto = produto.value(forKey: "descricao"){
+                        if let corProduto = produto.value(forKey: "cor"){
+                            if let precoProduto = produto.value(forKey: "preco"){
+                                
+                                print(String(describing: nomeProduto) + " | " + String(describing: corProduto) + " | " +  String(describing: precoProduto))
+                                
+                            }
+                        }
+                    }
+                    
+                    
+                }
+                
+            }else{
+                print("Nenhum usuário encontrado!")
+            }
+            
+        } catch {
+            print("Erro ao recuperar os usuarios!")
+        }
+        
+        
+        
+        
+        
+        
+        
         //Recuperando dados
         //Criar uma requisição
-        let requisicao = NSFetchRequest<NSFetchRequestResult>(entityName: "Usuario")
+        /*let requisicao = NSFetchRequest<NSFetchRequestResult>(entityName: "Usuario")
         
         
         do {
@@ -43,7 +110,7 @@ class ViewController: UIViewController {
             
         } catch {
             print("Erro ao recuperar os usuarios!")
-        }
+        }*/
         
         
         
