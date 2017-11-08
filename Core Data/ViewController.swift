@@ -56,7 +56,9 @@ class ViewController: UIViewController {
         let filtroDescricao = NSPredicate(format: "descricao contains [c] %@", "pho")
         let filtroPreco = NSPredicate(format: "preco >= %@", "190")
         
-        let combinacaoFiltro = NSCompoundPredicate(andPredicateWithSubpredicates: [filtroDescricao, filtroPreco])
+        //let combinacaoFiltro = NSCompoundPredicate(andPredicateWithSubpredicates: [filtroDescricao, filtroPreco])
+        
+        let combinacaoFiltro = NSCompoundPredicate(orPredicateWithSubpredicates: [filtroDescricao, filtroPreco])
         
         //aplicar filtros criados à requiscao
         requisicao.sortDescriptors = [ordenacaoAZ]
