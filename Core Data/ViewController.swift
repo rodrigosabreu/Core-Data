@@ -51,11 +51,16 @@ class ViewController: UIViewController {
         //let predicate = NSPredicate(format: "descricao == %@", "iPhone 5")
         //let predicate = NSPredicate(format: "descricao contains [c] %@", "iphone")
         //let predicate = NSPredicate(format: "descricao beginswith [c] %@", "mac")
-        let predicate = NSPredicate(format: "preco >= %@", "1")
+        //let predicate = NSPredicate(format: "preco >= %@", "1")
+        
+        let filtroDescricao = NSPredicate(format: "descricao contains [c] %@", "pho")
+        let filtroPreco = NSPredicate(format: "preco >= %@", "190")
+        
+        let combinacaoFiltro = NSCompoundPredicate(andPredicateWithSubpredicates: [filtroDescricao, filtroPreco])
         
         //aplicar filtros criados à requiscao
         requisicao.sortDescriptors = [ordenacaoAZ]
-        requisicao.predicate = predicate
+        requisicao.predicate = combinacaoFiltro
         
         
         
