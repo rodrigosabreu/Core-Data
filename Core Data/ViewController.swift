@@ -53,16 +53,21 @@ class ViewController: UIViewController {
         //let predicate = NSPredicate(format: "descricao beginswith [c] %@", "mac")
         //let predicate = NSPredicate(format: "preco >= %@", "1")
         
-        let filtroDescricao = NSPredicate(format: "descricao contains [c] %@", "pho")
-        let filtroPreco = NSPredicate(format: "preco >= %@", "190")
+        //let filtroDescricao = NSPredicate(format: "descricao contains [c] %@", "pho")
+        //let filtroPreco = NSPredicate(format: "preco >= %@", "190")
         
         //let combinacaoFiltro = NSCompoundPredicate(andPredicateWithSubpredicates: [filtroDescricao, filtroPreco])
         
-        let combinacaoFiltro = NSCompoundPredicate(orPredicateWithSubpredicates: [filtroDescricao, filtroPreco])
+        //let combinacaoFiltro = NSCompoundPredicate(orPredicateWithSubpredicates: [filtroDescricao, filtroPreco])
+        
+        
+        
+        let predicate = NSPredicate(format: "descricao == %@", "Macbook Pro 15")
+        
         
         //aplicar filtros criados à requiscao
         requisicao.sortDescriptors = [ordenacaoAZ]
-        requisicao.predicate = combinacaoFiltro
+        requisicao.predicate = predicate
         
         
         
@@ -78,6 +83,17 @@ class ViewController: UIViewController {
                             if let precoProduto = produto.value(forKey: "preco"){
                                 
                                 print(String(describing: nomeProduto) + " | " + String(describing: corProduto) + " | " +  String(describing: precoProduto))
+                                
+                                
+                                //atualizar
+                                /*produto.setValue( 220.50 , forKey: "preco")
+                                
+                                do{
+                                    try context.save()
+                                    print("Sucesso ao atualizar o produto!")
+                                }catch{
+                                    print("Erro ao atualizar o produto!")
+                                }*/
                                 
                             }
                         }
