@@ -62,7 +62,7 @@ class ViewController: UIViewController {
         
         
         
-        let predicate = NSPredicate(format: "descricao == %@", "Macbook Pro 15")
+        let predicate = NSPredicate(format: "descricao == %@", "Macbook Pro 13")
         
         
         //aplicar filtros criados à requiscao
@@ -86,14 +86,16 @@ class ViewController: UIViewController {
                                 
                                 
                                 //atualizar
-                                /*produto.setValue( 220.50 , forKey: "preco")
+                                produto.setValue( 199.50 , forKey: "preco")
+                                produto.setValue( "Macbook Pro 13" , forKey: "descricao")
+                                produto.setValue("Branca", forKey: "cor")
                                 
                                 do{
                                     try context.save()
                                     print("Sucesso ao atualizar o produto!")
                                 }catch{
                                     print("Erro ao atualizar o produto!")
-                                }*/
+                                }
                                 
                             }
                         }
