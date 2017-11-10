@@ -85,8 +85,17 @@ class ViewController: UIViewController {
                                 print(String(describing: nomeProduto) + " | " + String(describing: corProduto) + " | " +  String(describing: precoProduto))
                                 
                                 
+                                //remover
+                                context.delete( produto )
+                                do{
+                                    try context.save()
+                                    print("Sucesso ao remover o produto!")
+                                }catch{
+                                    print("Erro ao remover o produto!")
+                                }
+                                
                                 //atualizar
-                                produto.setValue( 199.50 , forKey: "preco")
+                                /*produto.setValue( 199.50 , forKey: "preco")
                                 produto.setValue( "Macbook Pro 13" , forKey: "descricao")
                                 produto.setValue("Branca", forKey: "cor")
                                 
@@ -95,7 +104,7 @@ class ViewController: UIViewController {
                                     print("Sucesso ao atualizar o produto!")
                                 }catch{
                                     print("Erro ao atualizar o produto!")
-                                }
+                                }*/
                                 
                             }
                         }
